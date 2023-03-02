@@ -245,7 +245,6 @@ class ScrollerWindow(Gtk.ApplicationWindow):
 		self.scroll.set_policy(Gtk.PolicyType.EXTERNAL, Gtk.PolicyType.EXTERNAL)
 		self.add(self.scroll)
 		self.box = Gtk.VBox if self.dim_scroll_v else Gtk.HBox
-		print('init_widgets', self.conf.misc_box_spacing)
 		self.box = self.box(spacing=self.conf.misc_box_spacing, expand=True)
 		self.scroll.add(self.box)
 		self.box_images, self.box_images_init = cs.deque(), True
@@ -437,7 +436,7 @@ class ScrollerWindow(Gtk.ApplicationWindow):
 		image.gtk.destroy()
 
 	def image_load(self, path):
-		print(path)
+		# print(path)
 		self.log.debug('Adding image: {}', path)
 		image = Image(path=path, gtk=Gtk.Image())
 		if not self.pp:
@@ -468,8 +467,8 @@ class ScrollerWindow(Gtk.ApplicationWindow):
 
 			if image.pb_src: # simple sync processing with no helper module
 				w, h = image.pb_src.get_width(), image.pb_src.get_height()
-				print(sz, self.get_allocation().width)
-				print('image_set_pixbufs', self.scroll.get_allocation().width)
+				# print(sz, self.get_allocation().width)
+				# print('image_set_pixbufs', self.scroll.get_allocation().width)
 ####				sz = 1700
 				w, h = ((sz, int(sz / (w / h))) if self.dim_scale_w else (int(sz * (w / h)), sz))
 				pixbuf = image.pb_src.scale_simple(w, h, self.conf.image_scale_algo)
