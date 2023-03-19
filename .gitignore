@@ -1,0 +1,4 @@
+*.log
+PATH_TO_YOUR/
+__pycache__/
+.vscode/
