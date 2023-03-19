@@ -800,7 +800,7 @@ def main(passed_path = '', args=None, conf=None):
     if opts.dump_css: return print(conf._win_css.replace('\t', '  '), end='')
     
     if passed_path:
-        src_paths = passed_path
+        src_paths = [passed_path]
     else:
         src_paths = opts.image_path or list()
     print(src_paths)
