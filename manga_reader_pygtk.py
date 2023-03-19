@@ -7,6 +7,7 @@ import infinite_image_scroller
 from zipfile import ZipFile
 import pathlib as pl
 import shutil
+import sys
 import os
 import re
 
@@ -16,7 +17,7 @@ TEMP_DIR.mkdir(exist_ok=True)
 def check_is_manga_ch(path):
     if path.endswith('.cbz') or path.endswith('.zip'):
         return True
-    print(path)
+    # print(path)
     for dname, dirs, files in os.walk(path):
         for fname in files:
             if not (fname.endswith('jpg') or fname.endswith('png') or fname.endswith('jpeg')):
@@ -78,7 +79,11 @@ def main():
     # path = '/home/jafarabbas33/Documents/Mangas/A Couple of Cuckoos'
     # print(path, check_is_manga_ch(path))
     path = '/home/jafarabbas33/Documents/Mangas/Call of the Night/Night 1.cbz'
-    print(path, check_is_manga_ch(path))
+
+    if len(sys.argv) > 1:
+        path = sys.argv[1]
+        
+    # print(path, check_is_manga_ch(path))
 
     is_manga_ch = check_is_manga_ch(path)
     # If is manga chapter path then run the application and return
